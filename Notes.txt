@@ -1,0 +1,271 @@
+Bitcoin white paper --> October 31 2008 (https://bitcoin.org/bitcoin.pdf)
+
+Smart Contracts white paper -- December 2013
+
+What Ethereum is?
+
+- The blockchain can be consider as a database that stores a record of every trasaction that has ever taken place
+
+- Para correr un nodo solo se debe bajar una copia del nodo de Ethereum y correrlo
+
+- target time for each block trasaction --> https://etherscan.io/chart/blocktime
+
+- Etherum Browser Test IDE --> https://remix.ethereum.org
+Remix para probar contratos rapido y tambien se puede interacturar con contratos que
+ya estan deployados son se requiere compilar el contrato y pasar la direccion del contrato 
+Utilizando la opcion "injected web3" en enviroment.
+
+- Los contratos se pueden ver como "Clases" en Java y las copias de esos contratos que se deployan en las cademas
+se pueden ver como "instancias" de esa clase.
+
+- Cada que quieres "checar algo" en la cadena se debe crear una transaccion y esto quiere decir que debemos esperar 
+a que esta se procese o se mine para esperar la respuesta.
+
+- Al modificar el contrato en una funcion "set" no puedes tener un "return" ya que tu no decides que te va a regresar
+lo que se regresa de esa funcion es el hash de la transaccion que se realizo.
+
+El "Wei" es una medida mas pequeña del ether es como los centavos al dolar
+- 1 Ether == 1,000,000,000,000,000,000 Wei
+
+- cada operacion logica dentro de tu contrato tiene que pagar un gas. Esto se puede ver el hojas de calculo (Gas Costs 
+from yellow paper -- EIP -150)
+
+- Mnemonic phrases --> 12 palabras aleatorias para acceder a diferentes cuentas (mas de 1)
+Es para hacer mas facil recordar y tener acceso a tus cuentas.
+Para reponer la frase en MetaMask debes desinstallar y volver a installar.
+
+- Mnemonic code converter --> https://iancoleman.io/bip39/
+
+- Link to get test eth --> https://faucets.chain.link/rinkeby
+- Different Test Network:
+If you are unable to obtain test ether from any Rinkeby faucet, or, you would prefer to try out a different test network, please see the following options below:
+Kovan Network
+Visit the ChainLink Kovan faucet at this address:
+https://faucets.chain.link/kovan
+
+Goerli Network
+This network uses the same concept as Rinkeby with an authenticated faucet that requires a public tweet. However, they provide more funds and do not seem to suffer as many outages as Rinkeby.
+Visit the faucet at this address:
+https://faucet.goerli.mudit.blog/
+
+- more links to get test eth:
+https://ibm-learning.udemy.com/course/ethereum-and-solidity-the-complete-developers-guide/learn/lecture/29328522#overview
+
+- get eth by posting in twitter --> https://faucet.rinkeby.io/
+
+- get eth --> https://goerlifaucet.com/
+
+- Truffle is a CLI tool used by most ethereum developers to deploy contracts and more.
+
+------------------------------------------------------------------------------------------------------------------------
+
+--> Para el proyecto INBOX:
+- primero creamos el directorio "inbox"
+- comando npm init para inicializar aplicacion.
+- instalar el compilador de solidity con el siguiente comando:
+npm install solc@0.4.17
+- Ganache/TestRPC --> Es una libreria para local test network, para montar
+una red local de prueba en maquina local.
+- Web3 libreria para dapps. (comunicacion entre js to ethereum network).
+- comando para instalar librerias:
+npm install mocha ganache-cli web3
+- Con web3 puedes crear instancias para conectarte a las networks, se requiere 
+una instancia nueva por cada network a la que te quieras conectar.
+
+------------------------------------------------------------------------------------------------------------------------
+RPC --> Remote Procedure Call, Ethereum client, los procesos para contactar con la blockchain 
+Truffle --> Es todas las tool que se requieren para compiling, testing, deploying, and packaging your application as easy as possible.
+Ganache --> Corre o simula una blockchain completa en local, se usa para testing principalmente
+MetaMask --> software provides users with the ability to create accounts, and loads a preconfigured instance of Web3 into
+ the browser that is used to interact with the blockchain via JSON RPC. (Differente a un nodo o RPC).
+Infura --> Servicio que corre los nodos porti y provide an API para conectar con esos nodos.
+Parity, Geth --> software requerido para correr tu propio nodo en maquina local.
+
+Infura is a public API access to public networks from ethereum
+infura.io
+Endpoint: 
+ - https://rinkeby.infura.io/v3/4116e263366a4eb0a7a49466bd60ecde
+ - wss://rinkeby.infura.io/ws/v3/4116e263366a4eb0a7a49466bd60ecde
+ Secret Project:
+ - 8c78fbd8687445b4a11d26b1e556f010
+ Project ID:
+ - 4116e263366a4eb0a7a49466bd60ecde
+Alternative to infura:
+Should I use infura,alchemy or run a node
+https://medium.com/buildbear/web3-should-i-use-infura-alchemy-or-run-a-node-5311a13d173
+
+Truffle install command:
+npm install @truffle/hdwallet-provider
+
+https://rinkeby.etherscan.io/
+
+deploing contract --> mariomucino@Marios-MacBook-Pro inbox % node deploy.js
+(node:9310) V8: /Users/mariomucino/Documents/Learning/Solidity/inbox/node_modules/solc/soljson.js:3 Invalid asm.js: Invalid member of stdlib
+(Use `node --trace-warnings ...` to show where the warning was created)
+Attempting to deploy from account 0xcF12CFaf08f1902bb39ededEEe20eA12669372D2
+Contract deployed to 0xF777Ae78ca2a49461E1A2C2F9d5FC5f9af7aa3bd
+
+REVIEW--------------------------------------------------------
+1.- Generar el contrato (inbox.sol)
+2.- Generar el compile.js file
+3.- compilar contrato con: node compile.js
+4.- Work in inbox.test.js
+- ganeche es como una network envevida para hacer tests
+-libreria web3 es la puerta a ethereum, siempre lleva un provider que le indica a que
+network se debe conectar.
+
+---------------------------------------------------------------
+
+Types in Solidity
+
+- address -> Has methods tied to it for sending money
+
+Solidity puede manejar Dynamic Arrays (matrices, arreglos bidimencionles)
+pero estos no se pueden mandar a traves de Web3. Los Strings son tomados com Dynamic Arrays, por esto no se pueden mandar atraves de web3 
+
+¿Que debo testear?
+answer What behavior i really care about 
+------------------------------------------------------------------
+ ----> Para proyecto LOTTERY:
+ -Se usa una version mas nueva de solc por lo que se debes ejecutar
+ los siguiente comandos para actualizar las librerias:
+
+ This almost always is caused by installing the wrong version of solc.
+
+Please run the following commands in the root of your project directory:
+
+Note - If you are using Windows, this assumes either GitBash or PowerShell is being used as a terminal:
+
+---- npm uninstall -g solc
+
+---- npm uninstall solc
+
+---- rm -r node_modules
+
+---- rm package-lock.json
+
+---- npm install
+
+---- npm install solc@0.4.17
+
+DO NOT run npm audit or npm audit -fix. This will break your project and its dependencies. 
+
+*Se usa REACT en front-end ya que es una buena opcion porque nos permite darle mas poder al front para hacer llamados
+a la red de Ethereum que con un html o JavaScript simple no podriamos hacer.
+comando para inicializar proyecto REACT:
+- npx create-react-app lottery-react
+Cuando ya tengas tu applicacion se debe instalar la libreria de web3:
+- npm install --save web3
+MetaMask inyecta una instancia de web3 por default si lo tienes installado en el navegador, pero una version vieja
+esta instancia la se puede usar para acceder a la red de blockchain por medio de REACT.
+Para esto se crea un config file dentro del proyecto de react ("web3.js").
+To run deployment script:
+- node deploy.js
+Al correr el deploy script podemos copiar en abi y la direccion del contrato y 
+crear un file en el proyecto react ("lottery.js")
+
+*APIs and documentation MetaMask:
+https://docs.metamask.io/guide/ethereum-provider.html#legacy-methods
+
+
+ERRORES COMUNES 
+
+***** TypeError: Cannot destructure property 'interface' of 'require(...)' as it is undefined.
+Esto quiere decir que tu compile file fallo, puede ser un typo en el nombre del contracts o usar 
+conole.log() para verificar que sale mal.
+
+console.log(solc.compile(source, 1))
+**********************************************************************************************
+KICKSTARTER PROBLEM:
+El dinero que se junto no siempre se usa para lo que se dono.
+
+----> Para proyecto CAMPAIGN:
+un STRUCT sirve para crear un tipo de variable nuevo, como definir un objeto para poder crear 
+instancias de ese objeto como un tipo de varible nuevo.
+- Al definir una funcion como "modifier" se declara para que ese bloque de codigo se pueda usar 
+en otras funciones sin tener que repetirlo simplement con agregarlo despues de scope de la 
+funcion.
+- Al definir una variable con memory estamos diciendo que va a hacer una copia de la referencia en 
+memeoria pero sera una nueva completamente diferente.
+Si en lugar de memory la definimos como storage quiere decir que la nueva variable va a apuntar
+al valor de la referencia que le estamos pasando tal cual, asi que si lo modificamos este cambio
+tambien se vera en la variable de referencia.
+- Instalar truffle para hacer deploy de los contratos:
+npm install @truffle/hdwallet-provider
+- Siempre que llamamos una funcion de un contrato que esta formado por varios datos se recibe un objeto 
+'Result'. Puede parecer un array pero es un objeto en realidad.
+
+***************  NEXT js *********************
+Next.js es un marco de desarrollo de código abierto creado sobre Node.js que permite 
+funcionalidades de aplicaciones web basadas en React, como la representación del lado del servidor 
+y la generación de sitios web estáticos. 
+En otras palabras es como un framework de React que permite hacer request del lado del servidor para 
+que unado un cliente pida el contenido ya lo de todo renderizado y con toda la info que se necesita.
+Es muy favorable para dapps en ethereum por el tiempo que tarda cada transaccion.
+- https://nextjs.org/
+- https://github.com/vercel/next.js
+- https://nextjs.org/docs
+
+Command to install:
+- npm install next react react-dom
+
+- npm run dev
+
+Semantic UI is a porjetc to make look good the frontend something like bootstrap
+
+Nota para Semantic UI:
+If you see some error like ERESOLVE unable to resolve dependency tree errors, you'll need to pass the --legacy-peer-deps flag:
+
+npm install next-routes --legacy-peer-deps 
+
+- Aun no se puede hacer un reques para obtener un arrey de structs por lo que para llenar una tabla se debe hacer 
+un request por cada row de structs.
+
+*****************************************************************************************************************************
+
+SMART CONTRACTS SECURITY
+
+Continuar aprendiendo:
+https://learning.oreilly.com/library/view/hands-on-smart-contract/9781492045250/ch12.html#idm44814731534920
+
+TYPES OF SMART CONTRACT VULNERABILITIES
+
+ --> Unprotected Function: Always ask yourself what roles should be allowed to invoke the function. Make sure to use 
+ appropiate <require> statements or modifiers to prevent unauthorized access.
+
+ --> transaction Ordering Depencdence: En este ataque el atacante trata de subir el gas price de su transaccion para 
+ que se ejecute primero y sacando ventaja de esto, ya que entre mas gas pagues mayor prioridad recive la transaccion y 
+ se pueden saltar otras transacciones si pagan menos gas. commonly targets applications in which timing is important, 
+ such as auctions or marketplaces. To mitigate this attack, try batching transactions or separating the details into a separate request.
+
+ --> Integer Overflow and Underflow: If we have a variable with the uint8 data type, its maximum value is 255. If you were 
+ to add 1 to 255, an overflow would occur and the result would be 0. Now that we have 0, if we were to subtract 1 from it, 
+ we would underflow and return 255. Instead of allowing overflows and underflows, we recommend using SafeMath when performing 
+ arithmetic operations.
+
+ --> Reentrancy: A reentrancy attack occurs when an important state variable is changed after a contract calls a function of another contract or 
+ invokes the fallback function of another contract. In these cases, the malicious contract is able to call back into the original contract, invoking
+  the same function again before the state has been updated.
+    To avoid this attack update the state of your contract before calling a function on any contract you do not own or before sending or transferring to 
+    any address that may be added by your users. It is also best to avoid using lower-level functions on addresses like call when dealing with unknown 
+    or untrusted addresses.
+
+    Here’s an example of a reentrancy. The attacker finds the vulnerability in the contract where two functions rely on the same state. And the hacker 
+    is able to call the function again before the balance is set to 0. This was the attack used by hackers in the DAO attack in 2016. The attacker 
+    recursively called certain functions to hack the contract, thus exploiting a reentrancy vulnerability in the contract.
+
+ --> Cross-function race conditions: One interesting attack is when multiple functions share the same state. An example of this is a contract where 
+ your balance is reset to 0 only after the transfer occurs, so the hacker could keep calling this even after they’ve received the withdrawal to hack 
+ more ether from the contract. Basically, they can call another function halfway through the first function’s execution to hack your contract.
+
+ --> Block Gas Limit: The Ethereum network, specifically the EVM, can only process a certain computational load at a time. This restriction is 
+ conceptualized in the form of the block gas limit, as discussed in Chapter 1. If you surpass the limit, the transaction fails. This can happen when a
+  function processes a significant number of state changes like when iterating over a large array.
+ To avoid exceeding the gas limit, break large—or potentially large—operations into batches. The pagination function we implemented in Chapter 7, Example 7-12, 
+ could be a great example for how to break things up into smaller chunks.
+
+ --> Timestamp Depencdence: Because the blockchain is decentralized, it relies on the computational power of distributed nodes (miners) instead of 
+ centralized servers to process transactions. The timestamp of the miner can therefore be manipulated by their owners in an attempt to circumvent any 
+ logic based on timestamps within a contract.
+In order to avoid this vulnerability, make sure your contract does not use timestamps for randomization seeds.
+

@@ -1,0 +1,31 @@
+In 2019, the global, public Ethereum network had more nodes than any other blockchain network. 
+With over 12,000 nodes, it’s unlikely that any two nodes will have the exact same set of peers. 
+As a transaction enters the network through a single peer, it spreads quickly around the world to every node. 
+Similarly, when a new block is added to the blockchain, news of this addition spreads quickly. 
+*****Unfortunately, quickly is not the same as instantaneously, meaning that when two blocks are created at the same time by two different nodes, 
+the respective peers of those diverging nodes will be operating on two different versions of the blockchain. 
+This is called a temporary fork. In general, temporary forks are resolved by granting precedence to whichever fork adds the next block, 
+summarized as “longest chain wins.” These rules are determined by a blockchain’s consensus protocol.
+
+CONSENSUS PROTOCOL:
+There are three protocols that we need to cover, and we’ll start with Proof-of-Work, which Ethereum used when they launched their blockchains.
+Proof-of-Work: (PoW) con poder computational
+Proof-of-Stake: (PoS) pruba de participacion
+Proof-of-Authority: (PoA) permisos a solo algunos nodos de agregar bloques.
+Project to merge PoS to Ethereum
+Serenity will also replace the existing EVM with eWASM (Ethereum flavored WebAssembly).
+
+La velicidad en la que las transacciones se procesan dependen entre mas gas el menten mas rapido y del protocolo de conceso.
+
+**** SMART CONTRACTS SECURITY ****
+One reason why having a secure smart contract is so important is that you cannot edit your contract once it’s on the blockchain. 
+Once it’s out there, it’s not possible to patch a fix like we can in other types of software development. 
+- Types of Smart Contract Vulnerabilities:
+*Unprotected Function: 
+*Transaction Ordering Dependence:
+*Integer Overflow and Underflow:
+*Reentrancy:
+*Cross-function race conditions:
+*Block Gas Limit:
+*Timestamp Depencdence:
+*
